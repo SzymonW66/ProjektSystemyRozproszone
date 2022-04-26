@@ -4,15 +4,13 @@ public class Client {
     private String firstName;
     private String lastName;
     private String pesel;
-    private String accountNumber;
-    private double moneyInBank;
+    private BankAccount bankAccount;
 
     public Client(String firstName, String lastName, String pesel, BankAccount bankAccount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
-        this.accountNumber = accountNumber;
-        this.moneyInBank = moneyInBank;
+        this.bankAccount = bankAccount;
     }
 
     public String getFirstName() {
@@ -39,20 +37,8 @@ public class Client {
         this.pesel = pesel;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public double getMoneyInBank() {
-        return moneyInBank;
-    }
-
-    public void setMoneyInBank(double moneyInBank) {
-        this.moneyInBank = moneyInBank;
+    public BankAccount getBankAccount() {
+        return bankAccount;
     }
 
     public void setBankAccount(BankAccount bankAccount) {
@@ -61,7 +47,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " " + pesel + " " + accountNumber + " " + moneyInBank;
+        return firstName + " " + lastName + " " + pesel + " " + bankAccount.toString();
     }
 
 }
