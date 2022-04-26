@@ -7,7 +7,7 @@ public class Client {
     private String accountNumber;
     private double moneyInBank;
 
-    public Client(String firstName, String lastName, String pesel, String accountNumber, double moneyInBank) {
+    public Client(String firstName, String lastName, String pesel, BankAccount bankAccount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
@@ -53,6 +53,10 @@ public class Client {
 
     public void setMoneyInBank(double moneyInBank) {
         this.moneyInBank = moneyInBank;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     @Override

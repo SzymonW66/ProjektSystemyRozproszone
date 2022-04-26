@@ -25,7 +25,11 @@ public class AppControl {
     }
 
     public void adminLoop() {
-
+        AdminOption adminOption;
+        do {
+            printOptions();
+            adminOption = get();
+        }
     }
 
     public void userLoop() {
@@ -35,6 +39,7 @@ public class AppControl {
             option = getOption();
             switch (option) {
                 case EXIT:
+                    exit();
                     break;
                 case DO_TRANSFER:
                     break;
@@ -58,6 +63,13 @@ public class AppControl {
     private void printMainOption() {
         for (MainOption mainOption : MainOption.values())
             System.out.println(mainOption);
+    }
+    //wypisanie opcji dla admina
+    private void printAdminOption() {
+        for (AdminOption adminOption: AdminOption.values()
+             ) {
+            System.out.println(adminOption);
+        }
     }
 
     private MainOption getMainOption () {
@@ -152,6 +164,38 @@ public class AppControl {
             }
         }
 
+    }
+
+    private enum AdminOption {
+        EXIT(0, "Wyjście z programu"),
+        ADD_CLIENT(1, "Dodaj nowego klienta"),
+        CHANGE_CLIENT_DATA(2, "Zmień dane klienta"),
+        REMOVE_CLIENT(3, "Usuń klienta"),
+        CHANGE_ACCOUNT_DATA (4, "Zmień dane konta bankowego"),
+        ADD_ACCOUNT(5, "Dodaj nowe konto bankowe i przypisz do użytkownika (jeżeli nie ma użytkownika to utworzy nowego)"),
+        REMOVE_ACCOUNT(6, "Usuń konto bankowe");
+
+        private final int value;
+        private final String description;
+
+        AdminOption (int value, String description){
+            this.description = description;
+            this.value = value;
+        }
+
+
+        @Override
+        public String toString() {
+            return value + " " + description;
+        }
+
+        static AdminOption createFromIntMain (int option) throws NoSuchElementException {
+            try {
+                return AdminOption.values()[option];
+            }catch (ArrayIndexOutOfBoundsException e) {
+                throw new NoSuchElementException("Brak opcji o id: " + option);
+            }
+        }
     }
 
 
