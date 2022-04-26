@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import io.ConsolePrinter;
 public class AppControl {
     private final ConsolePrinter printer = new ConsolePrinter();
-
+//pętle
     public void mainLoop() {
     MainOption mainOption;
     do{
@@ -28,8 +28,25 @@ public class AppControl {
         AdminOption adminOption;
         do {
             printOptions();
-            adminOption = get();
+            adminOption = getAdminOption();
+            switch (adminOption) {
+                case EXIT:
+                    break;
+                case ADD_CLIENT:
+                    break;
+                case ADD_ACCOUNT:
+                    break;
+                case REMOVE_CLIENT:
+                    break;
+                case REMOVE_ACCOUNT:
+                    break;
+                case CHANGE_CLIENT_DATA:
+                    break;
+                case CHANGE_ACCOUNT_DATA:
+                    break;
+            }
         }
+        while (adminOption != AdminOption.EXIT);
     }
 
     public void userLoop() {
@@ -39,7 +56,6 @@ public class AppControl {
             option = getOption();
             switch (option) {
                 case EXIT:
-                    exit();
                     break;
                 case DO_TRANSFER:
                     break;
@@ -53,23 +69,22 @@ public class AppControl {
         } while (option != OptionForUser.EXIT);
     }
 
-    //wypisanie opcji dla usera
-    private void printOptions() {
-        for (OptionForUser option : OptionForUser.values())
-            System.out.println(option);
-    }
+    //wybieranie opcji które są w enumach
+    private AdminOption getAdminOption() {
+        boolean optionOk = false;
+        AdminOption adminOption = null;
+        while (!optionOk) {
+            try {
+                adminOption = AdminOption.createFromIntAdmin(dataReader.getInt());
+                optionOk = true;
+            }catch (InputMismatchException i) {
+                printer.printLine("Wprowadzono wartość, która nie jest liczbą. Proszę podaj ponownie");
+            } catch (NoSuchElementException e) {
+                printer.printLine(e.getMessage() + "Brak danej opcji, podaj ponownie");
+            }
 
-    //wypisanie opcji dla mainLoop
-    private void printMainOption() {
-        for (MainOption mainOption : MainOption.values())
-            System.out.println(mainOption);
-    }
-    //wypisanie opcji dla admina
-    private void printAdminOption() {
-        for (AdminOption adminOption: AdminOption.values()
-             ) {
-            System.out.println(adminOption);
         }
+        return adminOption;
     }
 
     private MainOption getMainOption () {
@@ -89,8 +104,6 @@ public class AppControl {
         return optionMain;
     }
 
-
-    //możliwośc wybierania opcji dla UserLoop
     private OptionForUser getOption() {
         boolean optionOK = false;
         OptionForUser option = null;
@@ -106,14 +119,31 @@ public class AppControl {
         }
         return option;
     }
-//enum dla user wraz z dodatkami
+
+    //wypisanie opcji dla usera
+    private void printOptions() {
+        for (OptionForUser option : OptionForUser.values())
+            System.out.println(option);
+    }
+    //wypisanie opcji dla mainLoop
+    private void printMainOption() {
+        for (MainOption mainOption : MainOption.values())
+            System.out.println(mainOption);
+    }
+    //wypisanie opcji dla admina
+    private void printAdminOption() {
+        for (AdminOption adminOption: AdminOption.values()
+             ) {
+            System.out.println(adminOption);
+        }
+    }
+//enumy
     private enum OptionForUser {
         EXIT(0, "Wyjście z programu"),
         DO_TRANSFER(1, "Wykonaj przelew"),
         WITHDRAW_MONEY(2, "Wyciąg pieniędzy"),
         DEPOSIT_MONEY(3, "Wpłata pieniądzy"),
         CHECK_ACCOUNT(4, "Sprawdź stan konta");
-
 
         private final int value;
         private final String description;
@@ -137,7 +167,7 @@ public class AppControl {
             }
         }
     }
-//enum dla mainLoop
+
     private enum MainOption {
         EXIT (0, "Wyjście z programu"),
         TERMINAL (1, "Konsola administratora (wymaga "),
@@ -151,6 +181,7 @@ public class AppControl {
             this.value = value;
         }
 
+        //nadpisanie to string z wyrzuceniem wartości i opisu
         @Override
         public String toString() {
             return value + " "  + description;
@@ -183,13 +214,12 @@ public class AppControl {
             this.value = value;
         }
 
-
         @Override
         public String toString() {
             return value + " " + description;
         }
 
-        static AdminOption createFromIntMain (int option) throws NoSuchElementException {
+        static AdminOption createFromIntAdmin (int option) throws NoSuchElementException {
             try {
                 return AdminOption.values()[option];
             }catch (ArrayIndexOutOfBoundsException e) {
