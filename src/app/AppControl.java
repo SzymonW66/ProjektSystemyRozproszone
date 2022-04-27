@@ -3,8 +3,11 @@ package app;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import io.ConsolePrinter;
+import io.DataReader;
+
 public class AppControl {
     private final ConsolePrinter printer = new ConsolePrinter();
+    private final DataReader dataReader = new DataReader(printer);
 //pętle
     public void mainLoop() {
     MainOption mainOption;
@@ -92,7 +95,7 @@ public class AppControl {
         MainOption optionMain = null;
         while (!optionOk) {
             try {
-                optionMain = OptionForUser.createFrotmInt(dataReader.getInt());
+                optionMain = MainOption.createFromIntMain(dataReader.getInt());
                 optionOk = true;
             }catch (InputMismatchException i) {
                 printer.printLine("Wprowadzono wartość, która nie jest liczbą. Proszę podaj ponownie");

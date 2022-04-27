@@ -4,13 +4,11 @@ public class Client {
     private String firstName;
     private String lastName;
     private String pesel;
-    private BankAccount bankAccount;
 
-    public Client(String firstName, String lastName, String pesel, BankAccount bankAccount) {
+    public Client(String firstName, String lastName, String pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
-        this.bankAccount = bankAccount;
     }
 
     public String getFirstName() {
@@ -37,17 +35,9 @@ public class Client {
         this.pesel = pesel;
     }
 
-    public BankAccount getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
     @Override
     public String toString() {
-        return firstName + " " + lastName + " " + pesel + " " + bankAccount.toString();
+        return firstName + " " + lastName + " " + pesel ;
     }
 
 }

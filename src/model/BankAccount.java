@@ -2,11 +2,21 @@ package model;
 
 public class BankAccount {
     private String accountNumber;
-    private double moneyInBank;
+    private String moneyInBank;
+    private String pin;
 
-    public BankAccount(String accountNumber, double moneyInBank){
+    public BankAccount(String accountNumber, String moneyInBank, String pin){
         this.accountNumber = accountNumber;
         this.moneyInBank = moneyInBank;
+        this.pin = pin;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public String getAccountNumber() {
@@ -17,11 +27,11 @@ public class BankAccount {
         this.accountNumber = accountNumber;
     }
 
-    public double getMoneyInBank() {
+    public String getMoneyInBank() {
         return moneyInBank;
     }
 
-    public void setMoneyInBank(double moneyInBank) {
+    public void setMoneyInBank(String moneyInBank) {
         this.moneyInBank = moneyInBank;
     }
 
