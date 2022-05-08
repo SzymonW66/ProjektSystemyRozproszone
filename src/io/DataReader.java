@@ -1,8 +1,8 @@
 package io;
 
 import model.BankAccount;
-import model.Client;
-import io.NumberGenerator;
+import model.User;
+
 import java.util.Scanner;
 
 public class DataReader {
@@ -29,7 +29,7 @@ public String getString(){
 public void close(){
     input.close();
 }
-public Client readAndCreateClient(){
+public User readAndCreateClient(){
     printer.printLine("Podaj imię: ");
     String name = input.nextLine();
     printer.printLine("Podaj nazwisko: ");
@@ -37,20 +37,20 @@ public Client readAndCreateClient(){
     printer.printLine("Podaj pesel: ");
     String pesel =  input.nextLine();
 
-    return new Client(name, lastName, pesel);
+    return new User(name, lastName, pesel);
 }
 
-public BankAccount readAndCreateBankAccount(){
-    printer.printLine("Generowanie unikalnego numeru konta...");
-    String accountNumber = generateUniqueNumber(); //TODO-stworzyć w NumberGenerator (ma przyjąć listę aktualnych numerów kont i na jej podstawie wygnerować nową)
-    printer.printLine("Unikalny nume konta to: " + accountNumber);
-    printer.printLine("Podaj ile pieniędzy powinno być na koncie: ");
-    String moneyInAccount = input.nextLine();
-    printer.printLine("Generowanie losowego numeru pin...");
-    String pin = numberGenerator.generate4DigitPin();
-    printer.printLine("Pin to: " + pin);
-
-    return new BankAccount(accountNumber, moneyInAccount, pin);
-//TODO Dwie najtrudniejsze rzeczy: połączyć numery kont z użytkownikami, dodać import i export do pliku csv/json,
-}
+//public BankAccount readAndCreateBankAccount(){
+//    printer.printLine("Generowanie unikalnego numeru konta...");
+//  //  String accountNumber = generateUniqueNumber(); //TODO-stworzyć w NumberGenerator (ma przyjąć listę aktualnych numerów kont i na jej podstawie wygnerować nową)
+//   // printer.printLine("Unikalny nume konta to: " + accountNumber);
+//    printer.printLine("Podaj ile pieniędzy powinno być na koncie: ");
+//    String moneyInAccount = input.nextLine();
+//    printer.printLine("Generowanie losowego numeru pin...");
+//    String pin = numberGenerator.generate4DigitPin();
+//    printer.printLine("Pin to: " + pin);
+//
+//    return new BankAccount( moneyInAccount, pin);
+////TODO Dwie najtrudniejsze rzeczy: połączyć numery kont z użytkownikami, dodać import i export do pliku csv/json,
+//}
 }

@@ -1,0 +1,13 @@
+.......................................{konto 1:
+
+
+                                                }
+
+Zasady Solid - wydzielic te enumy
+Zrobic pod jeden plik json
+Zrobić metody do dodania hajsu itp.
+Zrobic małą klase Bank z listą osób
+Przelew z numeru konta na numer konta (zmiana danych w Json)
+numery konta to jest clue
+metoda exits w json która sprawdza numery kont
+

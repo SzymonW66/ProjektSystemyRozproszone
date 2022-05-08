@@ -1,15 +1,20 @@
 package model;
 
-public class Client {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public  class User  {
     private String firstName;
     private String lastName;
     private String pesel;
 
-    public Client(String firstName, String lastName, String pesel) {
+    public User(String firstName, String lastName, String pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
-
+//dodac hasło + login
+        //przy przelewie wybierać jaki numer konta
     }
 
     public String getFirstName() {
@@ -41,4 +46,14 @@ public class Client {
         return firstName + " " + lastName + " " + pesel ;
     }
 
+    private List<BankAccount> listOfAccountsOfThisUser = new ArrayList<>();
+
+    void addNewBankAccount (BankAccount bankAccount) {
+        listOfAccountsOfThisUser.add(bankAccount);
+    }
+
+
 }
+
+
+

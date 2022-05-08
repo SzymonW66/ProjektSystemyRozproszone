@@ -1,6 +1,8 @@
 package app;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
+
+import exception.DataExportException;
 import io.ConsolePrinter;
 import io.DataReader;
 
@@ -8,7 +10,7 @@ public class AppControl {
     private final ConsolePrinter printer = new ConsolePrinter();
     private final DataReader dataReader = new DataReader(printer);
 
-    private AppControl appControll;
+    private AppControl appControl;
 //metoda domyślna za każdym razem się odpala
 AppControl(){
 }
@@ -22,6 +24,7 @@ AppControl(){
             case EXIT:
                 break;
             case TERMINAL:
+                //metoda do logowania
                 adminLoop();
                 break;
             case USER_LOGIN:
@@ -34,7 +37,7 @@ AppControl(){
     public void adminLoop() {
         AdminOption adminOption;
         do {
-            printOptions();
+            printAdminOption();
             adminOption = getAdminOption();
             switch (adminOption) {
                 case EXIT:
@@ -43,7 +46,7 @@ AppControl(){
                     dataReader.readAndCreateClient();
                     break;
                 case ADD_ACCOUNT:
-                    dataReader.readAndCreateBankAccount();
+                  //  dataReader.readAndCreateBankAccount();
                     break;
                 case REMOVE_CLIENT:
                     break;
@@ -65,20 +68,20 @@ AppControl(){
             option = getOption();
             switch (option) {
                 case EXIT:
-                    exit();
+                  //  exit();
                     break;
                 case DO_TRANSFER:
-                    transferMoney();
+                  //  transferMoney();
                     break;
                 case CHECK_ACCOUNT:
-                    checkAccountInfo(atrybuty jako konto na którym jesteśmy zalogowani);
+                  //  checkAccountInfo(atrybuty jako konto na którym jesteśmy zalogowani);
                     //TODO zrobić exeception (za mała liczba w numerze konta, konto nie istnieje, za mała ilośc pieniedzy na koncie)a
                     break;
                 case DEPOSIT_MONEY:
-                    addMoney();
+                   // addMoney();
                     break;
                 case WITHDRAW_MONEY:
-                    withdrowMoney();
+                  //  withdrowMoney();
                     break;
             }
         } while (option != OptionForUser.EXIT);
@@ -187,7 +190,7 @@ AppControl(){
 
     private enum MainOption {
         EXIT (0, "Wyjście z programu"),
-        TERMINAL (1, "Konsola administratora (wymaga "),
+        TERMINAL (1, "Konsola administratora (wymaga uprawanienień)  "),
         USER_LOGIN (2, "Konsola klienta (wymaga numeru konta i pinu)");
 
        private final int value;
@@ -244,15 +247,15 @@ AppControl(){
             }
         }
     }
-    private void exit() {
-        try {
-            fileManager.exportData(library);
-            printer.printLine("Export danych do pliku zakończony powodzeniem");
-        } catch (DataExportException e ){
-            printer.printLine(e.getMessage());
-        }
-        dataReader.close();
-        printer.printLine("Koniec programu, bye bye!");
-    }
+//    private void exit() {
+//        try {
+//            fileManager.exportData(appControl);
+//            printer.printLine("Export danych do pliku zakończony powodzeniem");
+//        } catch (DataExportException e ){
+//            printer.printLine(e.getMessage());
+//        }
+//        dataReader.close();
+//
+//    }
 
 }
