@@ -9,6 +9,7 @@ public class Client {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
+
     }
 
     public String getFirstName() {

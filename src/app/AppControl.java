@@ -8,6 +8,11 @@ import io.DataReader;
 public class AppControl {
     private final ConsolePrinter printer = new ConsolePrinter();
     private final DataReader dataReader = new DataReader(printer);
+
+    private AppControl appControll;
+//metoda domyślna za każdym razem się odpala
+AppControl(){
+}
 //pętle
     public void mainLoop() {
     MainOption mainOption;
@@ -36,8 +41,10 @@ public class AppControl {
                 case EXIT:
                     break;
                 case ADD_CLIENT:
+                    dataReader.readAndCreateClient();
                     break;
                 case ADD_ACCOUNT:
+                    dataReader.readAndCreateBankAccount();
                     break;
                 case REMOVE_CLIENT:
                     break;
@@ -59,18 +66,26 @@ public class AppControl {
             option = getOption();
             switch (option) {
                 case EXIT:
+                    exit();
                     break;
                 case DO_TRANSFER:
+                    transferMoney();
                     break;
                 case CHECK_ACCOUNT:
+                    checkAccountInfo(atrybuty jako konto na którym jesteśmy zalogowani);
+                    //TODO zrobić exeception (za mała liczba w numerze konta, konto nie istnieje, za mała ilośc pieniedzy na koncie)a
                     break;
                 case DEPOSIT_MONEY:
+                    addMoney();
                     break;
                 case WITHDRAW_MONEY:
+                    withdrowMoney();
                     break;
             }
         } while (option != OptionForUser.EXIT);
     }
+
+
 
     //wybieranie opcji które są w enumach
     private AdminOption getAdminOption() {
@@ -230,6 +245,15 @@ public class AppControl {
             }
         }
     }
-
+    private void exit() {
+        try {
+            fileManager.exportData(library);
+            printer.printLine("Export danych do pliku zakończony powodzeniem");
+        } catch (DataExportException e ){
+            printer.printLine(e.getMessage());
+        }
+        dataReader.close();
+        printer.printLine("Koniec programu, bye bye!");
+    }
 
 }

@@ -29,7 +29,7 @@ public String getString(){
 public void close(){
     input.close();
 }
-public Client readAndCreateClientWithAccount(){
+public Client readAndCreateClient(){
     printer.printLine("Podaj imię: ");
     String name = input.nextLine();
     printer.printLine("Podaj nazwisko: ");
@@ -51,6 +51,6 @@ public BankAccount readAndCreateBankAccount(){
     printer.printLine("Pin to: " + pin);
 
     return new BankAccount(accountNumber, moneyInAccount, pin);
-
+//TODO Dwie najtrudniejsze rzeczy: połączyć numery kont z użytkownikami, dodać import i export do pliku csv/json,
 }
 }
