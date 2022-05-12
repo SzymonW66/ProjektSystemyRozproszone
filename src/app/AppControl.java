@@ -142,13 +142,18 @@ AppControl(){
 
     //wypisanie opcji dla usera
     private void printOptions() {
-        for (OptionForUser option : OptionForUser.values())
+        for (OptionForUser option : OptionForUser.values()) {
             System.out.println(option);
+        }
+        System.out.println("==========================================");
     }
+
     //wypisanie opcji dla mainLoop
     private void printMainOption() {
-        for (MainOption mainOption : MainOption.values())
+        for (MainOption mainOption : MainOption.values()) {
             System.out.println(mainOption);
+        }
+        System.out.println("==========================================");
     }
     //wypisanie opcji dla admina
     private void printAdminOption() {
@@ -156,6 +161,7 @@ AppControl(){
              ) {
             System.out.println(adminOption);
         }
+        System.out.println("==========================================");
     }
 //enumy
 public enum OptionForUser {

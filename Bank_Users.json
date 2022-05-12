@@ -1,0 +1,15 @@
+"User1"{
+  "firstName": "Szymon",
+  "lastName": "Wajs",
+  "pesel": '73748593847',
+  "login": "swajs",
+  "password": "superhaslo",
+  "BankAccount": [
+    "accountNumber",
+    "moneyInBank",
+    "pin"
+],
+}
+
+
+//jak dodać listę kont/ jak ma ona wyglądać w Json
