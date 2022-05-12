@@ -36,8 +36,12 @@ public User readAndCreateClient(){
     String lastName = input.nextLine();
     printer.printLine("Podaj pesel: ");
     String pesel =  input.nextLine();
+    printer.printLine("Podaj login: ");
+    String login = input.nextLine();
+    printer.printLine("Podaj hasło");
+    String password = input.nextLine();
 
-    return new User(name, lastName, pesel);
+    return new User(name, lastName, pesel, login, password);
 }
 
 //public BankAccount readAndCreateBankAccount(){

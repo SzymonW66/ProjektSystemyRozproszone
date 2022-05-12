@@ -3,8 +3,8 @@
 
                                                 }
 
-Zasady Solid - wydzielic te enumy
-Zrobic pod jeden plik json
+Zasady Solid - wydzielic te enumy -> można jakoś naprawić i guess
+Zrobic pod jeden plik json - jest
 Zrobić metody do dodania hajsu itp.
 Zrobic małą klase Bank z listą osób
 Przelew z numeru konta na numer konta (zmiana danych w Json)

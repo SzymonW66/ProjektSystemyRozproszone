@@ -158,7 +158,7 @@ AppControl(){
         }
     }
 //enumy
-    private enum OptionForUser {
+public enum OptionForUser {
         EXIT(0, "Wyjście z programu"),
         DO_TRANSFER(1, "Wykonaj przelew"),
         WITHDRAW_MONEY(2, "Wyciąg pieniędzy"),
